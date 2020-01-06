@@ -21,6 +21,7 @@ module.exports = class MetataggerPlugin {
 
     if (!options.tags) {
       console.warn('Metatagger Plugin: No tags options provided');
+      return;
     }
 
     const validTags = ajv.validate(tagOptionsSchema, options.tags);
