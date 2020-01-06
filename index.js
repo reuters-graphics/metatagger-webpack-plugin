@@ -3,6 +3,7 @@ const createElement = require('create-html-element');
 
 const getTagString = (name, attributes = {}) => {
   const html = attributes.html || '';
+  delete attributes.html;
   return createElement({ name, attributes, html });
 };
 
@@ -11,7 +12,7 @@ module.exports = class MetataggerPlugin {
     this.options = options;
   }
 
-  addMetatag = (selector, tag, attributes, prepend) => {
+  addMetatag = (selector, tag, attributes, prepend = false) => {
     if (prepend) {
       this.$(selector).prepend(getTagString(tag, attributes));
     } else {
