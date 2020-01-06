@@ -1,0 +1,14 @@
+{
+  "name": "metatagger-webpack-plugin",
+  "version": "0.0.1",
+  "description": "Inject metatags into webpack-html-plugin.",
+  "main": "index.js",
+  "repository": "https://github.com/reuters-graphics/metatagger-webpack-plugin",
+  "author": "Jon McClure <jon.r.mcclure@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "create-html-element": "^3.0.0"
+  }
+}

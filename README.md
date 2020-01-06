@@ -1,0 +1,1 @@
+# metatagger-webpack-plugin
