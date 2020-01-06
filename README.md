@@ -19,7 +19,11 @@ $ yarn add metatagger-webpack-plugin
 ### Use
 
 ```javascript
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MetataggerPlugin = require('metatagger-webpack-plugin');
+
 const webpackConfig = {
+  // ...
   plugins: [
     new HtmlWebpackPlugin(),
     // Add plugin AFTER html-webpack-plugin.
