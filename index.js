@@ -5,7 +5,8 @@ const AJV = require('ajv');
 
 const ajv = new AJV();
 
-const getTagString = (name, attributes = {}) => {
+const getTagString = (name, attr = {}) => {
+  const attributes = Object.assign({}, attr);
   const html = attributes.html || '';
   delete attributes.html;
   try {
