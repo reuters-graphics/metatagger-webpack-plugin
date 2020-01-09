@@ -1,6 +1,6 @@
 {
   "name": "metatagger-webpack-plugin",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "Inject metatags into webpack-html-plugin output.",
   "main": "index.js",
   "repository": "https://github.com/reuters-graphics/metatagger-webpack-plugin",
