@@ -2,6 +2,7 @@ const cheerio = require('cheerio');
 const createElement = require('create-html-element');
 const tagOptionsSchema = require('./schema');
 const AJV = require('ajv');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const ajv = new AJV();
 
@@ -55,10 +56,10 @@ module.exports = class MetataggerPlugin {
 
     if (!tags) return;
 
-    compiler.plugin('compilation', (compilation) => {
-      compilation.plugin(
-        'html-webpack-plugin-before-html-processing',
-        (data) => {
+    compiler.hooks.compilation.tap('MetataggerPlugin', (compilation) => {
+      HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync(
+        'MetataggerPlugin', // <-- Set a meaningful name here for stacktraces
+        (data, cb) => {
           try {
             this.$ = cheerio.load(data.html);
           } catch (e) {
@@ -82,8 +83,7 @@ module.exports = class MetataggerPlugin {
           } catch (e) {
             throw new Error('Metatagger Plugin: Error rendering HTML:\n' + e);
           }
-
-          return data;
+          cb(null, data);
         }
       );
     });

@@ -6,14 +6,20 @@ Inject metatags (or any tag) into html-webpack-plugin output.
 
 ### Install
 
-```
+```bash
 $ npm install metatagger-webpack-plugin
+
+# w/ html-webpack-plugin@next
+$ npm install metatagger-webpack-plugin@next
 ```
 
 or
 
-```
+```bash
 $ yarn add metatagger-webpack-plugin
+
+# w/ html-webpack-plugin@next
+$ yarn metatagger-webpack-plugin@next
 ```
 
 ### Use
