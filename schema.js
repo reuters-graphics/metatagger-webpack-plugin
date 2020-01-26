@@ -1,5 +1,5 @@
 // JSON schema used to validate tags options.
-export default {
+const tagsSchema = {
   type: 'object',
   patternProperties: {
     '.*': {
@@ -19,4 +19,19 @@ export default {
       },
     },
   },
+};
+
+export default {
+  type: 'object',
+  properties: {
+    pages: {
+      type: 'array',
+      items: {
+        type: 'string',
+        pattern: '\.html$', // eslint-disable-line no-useless-escape
+      },
+    },
+    tags: tagsSchema,
+  },
+  required: ['tags'],
 };

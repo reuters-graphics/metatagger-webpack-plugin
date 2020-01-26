@@ -11,6 +11,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin(),
     new Plugin({
+      pages: ['index.html'],
       tags: {
         head: {
           meta: [

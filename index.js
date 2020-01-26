@@ -1,10 +1,8 @@
-import AJV from 'ajv';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import cheerio from 'cheerio';
 import createElement from 'create-html-element';
-import tagOptionsSchema from './schema';
-
-const ajv = new AJV();
+import optionsSchema from './schema';
+import validateOptions from 'schema-utils';
 
 const getTagString = (name, attr = {}) => {
   const attributes = Object.assign({}, attr);
@@ -19,18 +17,9 @@ const getTagString = (name, attr = {}) => {
 
 export default class MetataggerPlugin {
   constructor(options) {
+    validateOptions(optionsSchema, options, 'MetataggerPlugin');
+
     this.options = options;
-
-    if (!options.tags) {
-      console.warn('Metatagger Plugin: No tags options provided');
-      return;
-    }
-
-    const validTags = ajv.validate(tagOptionsSchema, options.tags);
-
-    if (!validTags) {
-      throw new Error('Metatagger Plugin: Tags options is invalid.');
-    }
   }
 
   addMetatag = (selector, tag, attributes, prepend = false) => {
@@ -52,14 +41,18 @@ export default class MetataggerPlugin {
   };
 
   apply(compiler) {
-    const { tags } = this.options;
+    const { tags, pages } = this.options;
 
     if (!tags) return;
 
     compiler.hooks.compilation.tap('MetataggerPlugin', (compilation) => {
       HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync(
-        'MetataggerPlugin', // <-- Set a meaningful name here for stacktraces
+        'MetataggerPlugin',
         (data, cb) => {
+          const emittedPageName = data.plugin.childCompilationOutputName;
+
+          if (pages && pages.indexOf(emittedPageName) < 0) cb(null, data);
+
           try {
             this.$ = cheerio.load(data.html);
           } catch (e) {

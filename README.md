@@ -34,6 +34,9 @@ const webpackConfig = {
     new HtmlWebpackPlugin(),
     // Add plugin AFTER html-webpack-plugin.
     new MetataggerPlugin({
+      // Specify which pages emitted from html-webpack-plugin to inject
+      // tags into. Not specifying will inject tags into all pages.
+      pages: ['index.html']
       // tags will represent the metatags to inject into your page.
       tags: {
         // Each property under tags is a valid query selector.
