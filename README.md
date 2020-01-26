@@ -4,6 +4,8 @@
 
 Inject metatags (or any tag) into html-webpack-plugin output.
 
+[![npm version](https://badge.fury.io/js/metatagger-webpack-plugin.svg)](https://badge.fury.io/js/metatagger-webpack-plugin) ![Reuters open source software](https://badgen.net/badge/Reuters/open%20source/?color=ff8000)
+
 ### Install
 
 ```bash
