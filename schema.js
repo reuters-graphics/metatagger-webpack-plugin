@@ -1,5 +1,5 @@
 // JSON schema used to validate tags options.
-module.exports = {
+export default {
   type: 'object',
   patternProperties: {
     '.*': {

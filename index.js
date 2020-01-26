@@ -1,8 +1,8 @@
-const cheerio = require('cheerio');
-const createElement = require('create-html-element');
-const tagOptionsSchema = require('./schema');
-const AJV = require('ajv');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import AJV from 'ajv';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import cheerio from 'cheerio';
+import createElement from 'create-html-element';
+import tagOptionsSchema from './schema';
 
 const ajv = new AJV();
 
@@ -17,7 +17,7 @@ const getTagString = (name, attr = {}) => {
   }
 };
 
-module.exports = class MetataggerPlugin {
+export default class MetataggerPlugin {
   constructor(options) {
     this.options = options;
 
