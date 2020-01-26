@@ -1,6 +1,6 @@
 {
   "name": "metatagger-webpack-plugin",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Inject tags into webpack-html-plugin output.",
   "source": "index.js",
   "main": "dist/index.js",
