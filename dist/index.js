@@ -98,10 +98,6 @@ MetataggerPlugin.prototype.apply = function apply (compiler) {
   compiler.hooks.compilation.tap('MetataggerPlugin', function (compilation) {
     HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync('MetataggerPlugin', function (data, cb) {
       var emittedPageName = data.plugin.childCompilationOutputName || data.outputName;
-      console.log({
-        childCompilationOutputName: data.plugin.childCompilationOutputName,
-        outputName: data.outputName
-      });
       if (pages && pages.indexOf(emittedPageName) < 0) { return cb(null, data); }
 
       try {
