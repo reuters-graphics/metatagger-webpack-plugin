@@ -14,6 +14,7 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "microbundle -f cjs --target node",
+    "pretest": "npm run build",
     "test": "mocha"
   },
   "dependencies": {
