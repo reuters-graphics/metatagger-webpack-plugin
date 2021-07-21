@@ -49,9 +49,9 @@ export default class MetataggerPlugin {
       HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync(
         'MetataggerPlugin',
         (data, cb) => {
-          const emittedPageName = data.plugin.childCompilationOutputName;
+          const emittedPageName = data.plugin.childCompilationOutputName || data.outputName;
 
-          if (pages && pages.indexOf(emittedPageName) < 0) cb(null, data);
+          if (pages && pages.indexOf(emittedPageName) < 0) return cb(null, data);
 
           try {
             this.$ = cheerio.load(data.html);
